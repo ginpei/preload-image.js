@@ -2,7 +2,7 @@ English->[README.md](README.md)
 
 # preload-image.js
 
-よくある画像先行読み込みするやつ。
+画像をひとつとか全部とか読み込んだらコールバック実行するやつ。
 
 # 使い方
 

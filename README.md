@@ -2,7 +2,7 @@
 
 # preload-image.js
 
-Common image-preloader.
+Run callback when each/all specified images are loaded.
 
 # Usage
 
