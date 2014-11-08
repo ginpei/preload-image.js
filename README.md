@@ -6,24 +6,32 @@ Common image-preloader.
 
 # Usage
 
+See sample JS. -> [sample/sample.js](sample/sample.js)
+
 Paste content of [preload-image.min.js](preload-image.min.js) and:
 
 ```js
 preloadImages([
-    'path/to/image1',
-    'path/to/image2',
-    'path/to/image3'
+	'path/to/image1',
+	'path/to/image2',
+	'path/to/image3'
 ])
-    .onprogress(function(data) {
-        console.log('"' + data.path + '" is loaded.');
-        console.log('progressing: ',
-            data.loadedList.length, '/', data.xxx.length,
-            ' : ',
-            parseInt(100 * data.loadedList.length / data.xxx.length, 10) + '%');
-    })
-    .onload(function(data) {
-        console.log('Done.');
-    });
+	.onprogress(function(data) {
+		console.log(
+			data.path, 'is loaded.',
+			'Status: ',
+			data.loadeds.length, '/', data.files.length,
+			' : ',
+			parseInt(100 * data.loadeds.length / data.files.length, 10) + '%'
+			);
+		document.body.appendChild(data.image);
+	})
+	.onload(function(data) {
+		console.log('Done.');
+	})
+	.onerror(function(data) {
+		console.error('ERROR!', data.event);
+	});
 ```
 
 # About
@@ -34,7 +42,7 @@ preloadImages([
 	* [@ginpei\_jp](https://twitter.com/ginpei_jp)
 	* [@ginpei\_en](https://twitter.com/ginpei_en)
 	* [ginpei.info](http://ginpei.info/)
-* [ginpei/Osteoporosis.js](https://github.com/ginpei/Osteoporosis.js)
+* [ginpei/preload-image.js](https://github.com/ginpei/preload-image.js)
 
 ## License
 
