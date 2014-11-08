@@ -17,13 +17,16 @@ preloadImages([
 	'path/to/image3'
 ])
 	.onprogress(function(data) {
+		var loaded = data.loadeds.length;
+		var all = data.files.length;
+		var progress = parseInt(100 * loaded / all, 10);
+
 		console.log(
-			data.path, 'is loaded.',
-			'Status: ',
-			data.loadeds.length, '/', data.files.length,
-			' : ',
-			parseInt(100 * data.loadeds.length / data.files.length, 10) + '%'
+			data.path, 'is loades.',
+			'Status:', loaded + '/' + all, '(' + progress + '%)'
 			);
+
+		// show image on browser
 		document.body.appendChild(data.image);
 	})
 	.onload(function(data) {

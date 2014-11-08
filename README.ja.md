@@ -17,13 +17,16 @@ preloadImages([
 	'path/to/image3'
 ])
 	.onprogress(function(data) {
+		var loaded = data.loadeds.length;
+		var all = data.files.length;
+		var progress = parseInt(100 * loaded / all, 10);
+
 		console.log(
 			data.path, 'を読み込みました。',
-			'進捗: ',
-			data.loadeds.length, '/', data.files.length,
-			' : ',
-			parseInt(100 * data.loadeds.length / data.files.length, 10) + '%'
+			'進捗:', loaded + '/' + all, '(' + progress + '%)'
 			);
+
+		// 画像をブラウザーで表示
 		document.body.appendChild(data.image);
 	})
 	.onload(function(data) {

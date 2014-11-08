@@ -26,13 +26,16 @@ onload:function(n){return t=n,this},onerror:function(n){return s
 		console.log('loading...');
 		preloadImages(files)
 			.onprogress(function(data) {
+				var loaded = data.loadeds.length;
+				var all = data.files.length;
+				var progress = parseInt(100 * loaded / all, 10);
+
 				console.log(
 					data.path, 'is loades.',
-					'Status: ',
-					data.loadeds.length, '/', data.files.length,
-					' : ',
-					parseInt(100 * data.loadeds.length / data.files.length, 10) + '%'
+					'Status:', loaded + '/' + all, '(' + progress + '%)'
 					);
+
+				// show image on browser
 				document.body.appendChild(data.image);
 			})
 			.onload(function(data) {
